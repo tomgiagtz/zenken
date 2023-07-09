@@ -21,14 +21,17 @@ public:
         }
     }
 
-    /**
-     * \brief replaces entire grid with a new one
-     * 
-     * \param _size size of square grid
-     */
     void SetSize(const unsigned int _size) {
         size = _size;
         grid = std::vector<std::vector<Cell>>(size, std::vector<Cell>(size));
+    }
+
+    unsigned GetSize() {
+        return size;
+    }
+
+    Cell* GetCell(const unsigned int _i, const unsigned int _j) {
+        return &grid[_i][_j];
     }
 
     void Clear() {

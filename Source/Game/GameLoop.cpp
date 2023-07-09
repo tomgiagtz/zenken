@@ -4,6 +4,7 @@
 #include <SFML/System/Clock.hpp>
 
 #include "../Grid/Grid.h"
+#include "../Grid/GridView.h"
 
 Button* GameLoop::CreateButton() {
     sf::Vector2f squareSize(240.f, 120.f);
@@ -29,16 +30,19 @@ void GameLoop::Init() {
     unsigned int width = size.x;
     unsigned int height = size.y;
 
-    button->SetPosition(360, 240);
-    button->SetSize(240, 80);
-
-    entityManager->RegisterEntity(*button);
+    // button->SetPosition(360, 240);
+    // button->SetSize(240, 80);
+    //
+    // entityManager->RegisterEntity(*button);
 
 
     Grid* grid = new Grid();
     std::cout << grid->ToString();
-    grid->Clear();
-    std::cout << grid->ToString();
+
+    GridView* gridView = new GridView(500, grid);
+    entityManager->RegisterEntity(*gridView);
+    // grid->Clear();
+    // std::cout << grid->ToString();
 }
 
 void GameLoop::Update() {

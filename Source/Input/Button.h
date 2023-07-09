@@ -59,7 +59,7 @@ public:
     //     this->shape->setFillColor(_idleColor);
     // }
 
-    Button(sf::RectangleShape* _shape, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun, std::string _text = "press", unsigned int _characterSize = 48) : shape(_shape), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor), characterSize(_characterSize) {
+    Button(sf::RectangleShape* _shape, std::string _text = "press", unsigned int _characterSize = 48, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) : shape(_shape), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor), characterSize(_characterSize) {
         // Set button text
         buttonText = new sf::Text();
         buttonText->setFont(Theme::Primary);
@@ -69,6 +69,26 @@ public:
         buttonText->setPosition(
             this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
             this->shape->getPosition().y
+        );
+
+        // Set color
+        this->shape->setFillColor(_idleColor);
+    }
+
+    // default constructor
+    Button(unsigned _xSize = 20, unsigned _ySize = 20, const std::string& _text = "press", unsigned int _characterSize = 8, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) : isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor), characterSize(_characterSize) {
+        // Set button shape
+        shape = new sf::RectangleShape(sf::Vector2f(_xSize, _ySize));
+
+        // Set button text
+        buttonText = new sf::Text();
+        buttonText->setFont(Theme::Primary);
+        buttonText->setString(_text);
+        buttonText->setFillColor(Theme::DarkCharcoal);
+        buttonText->setCharacterSize(_characterSize);
+        buttonText->setPosition(
+            this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
+            this->shape->getPosition().y + characterSize * 0.25f
         );
 
         // Set color
@@ -90,6 +110,14 @@ public:
 
     void SetSize(float _x, float _y) {
         shape->setSize(sf::Vector2f(_x, _y));
+    }
+
+    void SetText(std::string _text) {
+        buttonText->setString(_text);
+        buttonText->setPosition(
+            this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
+            this->shape->getPosition().y
+        );
     }
 
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;

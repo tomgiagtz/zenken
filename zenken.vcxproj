@@ -220,6 +220,7 @@
           <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
           <LinkCompiled>true</LinkCompiled>
         </ClCompile>
+        <ClCompile Include="Source\Grid\GridView.cpp" />
         <ClCompile Include="Source\Input\Button.cpp" />
         <ClCompile Include="Source\main.cpp">
             <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -305,6 +306,7 @@
         <ClInclude Include="Source\Game\GameLoop.h" />
         <ClInclude Include="Source\Grid\Cell.h" />
         <ClInclude Include="Source\Grid\Grid.h" />
+        <ClInclude Include="Source\Grid\GridView.h" />
         <ClInclude Include="Source\Input\Button.h" />
         <ClInclude Include="Source\Theme\Theme.h" />
     </ItemGroup>
