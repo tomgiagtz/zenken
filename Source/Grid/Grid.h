@@ -1,25 +1,24 @@
 ﻿#pragma once
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "Cell.h"
 
 class Grid {
+private:
+    unsigned int size;
+    std::vector<std::vector<Cell>> grid;
+    // Replace the current grid with a new one
+    void Replace();
+
 public:
-    Grid(unsigned int _size = 5) : size(_size) {
-        grid = new Cell*[size];
+    Grid(const unsigned int _size = 5) : size(_size), grid(size, std::vector<Cell>(size)) {
         for (unsigned int i = 0; i < size; i++) {
-            grid[i] = new Cell[size];
             for (unsigned int j = 0; j < size; ++j) {
-                grid[i][j] = Cell(i, j); // copy the initData into each cell
+                grid[i][j] = Cell(i, j, (i * size) + j);
             }
         }
-    }
-
-    ~Grid() {
-        for (unsigned int i = 0; i < size; ++i) {
-            delete[] grid[i];
-        }
-        delete[] grid;
     }
 
     /**
@@ -27,24 +26,29 @@ public:
      * 
      * \param _size size of square grid
      */
-    void SetSize(unsigned int _size) {
+    void SetSize(const unsigned int _size) {
         size = _size;
-        Replace();
+        grid = std::vector<std::vector<Cell>>(size, std::vector<Cell>(size));
     }
 
-    void ToString() const {
-        for (unsigned int i = 0; i < size; ++i) {
+    void Clear() {
+        for (unsigned int i = 0; i < size; i++) {
             for (unsigned int j = 0; j < size; ++j) {
-                std::cout << grid[i][j].GetValue() << " ";
+                grid[i][j].SetValue(0);
             }
-            std::cout << std::endl;
         }
     }
 
-private:
-    unsigned int size;
-    Cell** grid;
+    std::string ToString() const {
+        std::string result;
+        for (unsigned int i = 0; i < grid.size(); ++i) {
+            for (unsigned int j = 0; j < grid[i].size(); ++j) {
+                result += std::to_string(grid[i][j].GetValue()) + " ";
+            }
+            result += "\n";
+        }
+        return result;
+    }
 
-    // Replace the current grid with a new one
-    void Replace();
+
 };

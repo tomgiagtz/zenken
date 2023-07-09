@@ -10,4 +10,8 @@ extern sf::Color Orange;
 extern sf::Color Charcoal;
 extern sf::Color DarkCharcoal;
 extern sf::Color Red;
+extern sf::Font Primary;
+extern sf::Font Secondary;
+
+bool LoadFonts();
 }

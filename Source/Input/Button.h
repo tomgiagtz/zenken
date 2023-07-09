@@ -18,6 +18,7 @@ private:
     sf::Color idleColor;
     sf::Color hoverColor;
     sf::Color activeColor;
+    unsigned int characterSize = 16;
 
 
 
@@ -58,12 +59,12 @@ public:
     //     this->shape->setFillColor(_idleColor);
     // }
 
-    Button(sf::RectangleShape* _shape, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun, std::string _text = "press", unsigned int _characterSize = 30 /*, sf::Font* font, */) : shape(_shape), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor) {
+    Button(sf::RectangleShape* _shape, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun, std::string _text = "press", unsigned int _characterSize = 48) : shape(_shape), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor), characterSize(_characterSize) {
         // Set button text
-        // buttonText.setFont(*font);
         buttonText = new sf::Text();
-        buttonText->setString(_text);
-        buttonText->setFillColor(sf::Color::White);
+        buttonText->setFont(Theme::Primary);
+        buttonText->setString("Hello");
+        buttonText->setFillColor(Theme::DarkCharcoal);
         buttonText->setCharacterSize(_characterSize);
         buttonText->setPosition(
             this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
@@ -78,7 +79,7 @@ public:
         shape->setPosition(_x, _y);
         buttonText->setPosition(
             this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
-            this->shape->getPosition().y
+            this->shape->getPosition().y + characterSize * 0.2f
         );
     }
 

@@ -3,8 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "../Grid/Grid.h"
+
 Button* GameLoop::CreateButton() {
-    sf::Vector2f squareSize(120.f, 120.f);
+    sf::Vector2f squareSize(240.f, 120.f);
     sf::RectangleShape* square = new sf::RectangleShape(squareSize);
     // square->setPosition(sf::Vector2f(300, 180));
     // square.setFillColor(sf::Color::Red);
@@ -16,6 +18,7 @@ Button* GameLoop::CreateButton() {
 void GameLoop::Init() {
     isRunning = true;
     entityManager = &EntityManager::Instance();
+    Theme::LoadFonts();
     // sf::RenderWindow window(sf::VideoMode(720, 480), "ZenKen");
     sf::CircleShape shape(100.f);
 
@@ -27,12 +30,15 @@ void GameLoop::Init() {
     unsigned int height = size.y;
 
     button->SetPosition(360, 240);
-    button->SetSize(20, 20);
+    button->SetSize(240, 80);
 
     entityManager->RegisterEntity(*button);
-    // square.setPosition(width * 0.5f, height * 0.5f);
 
-    // while (window.isOpen()) { }
+
+    Grid* grid = new Grid();
+    std::cout << grid->ToString();
+    grid->Clear();
+    std::cout << grid->ToString();
 }
 
 void GameLoop::Update() {
