@@ -16,7 +16,7 @@ public:
     Grid(const unsigned int _size = 5) : size(_size), grid(size, std::vector<Cell>(size)) {
         for (unsigned int i = 0; i < size; i++) {
             for (unsigned int j = 0; j < size; ++j) {
-                grid[i][j] = Cell(i, j, (i * size) + j);
+                grid[i][j] = Cell(i, j, (i * size + j) % size);
             }
         }
     }

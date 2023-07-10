@@ -43,6 +43,39 @@ void Button::SetState(ButtonState _state) {
     shape->setFillColor(fillColor);
 }
 
+void Button::SetPosition(sf::Vector2f _position) {
+    SetPosition(_position.x, _position.y);
+}
+
+void Button::SetPosition(float _x, float _y) {
+    position.x = _x;
+    position.y = _y;
+    shape->setPosition(_x, _y);
+    const float ShapeCenterX = _x + (this->shape->getGlobalBounds().width / 2.f);
+    const float ShapeCenterY = _y + (this->shape->getGlobalBounds().height / 2.f);
+
+    // const float TextCenterX = (buttonText->getGlobalBounds().width / 2.f);
+    // const float TextCenterY = (buttonText->getGlobalBounds().height / 2.f) + characterSize / 2.f;
+
+    sf::FloatRect textRect = buttonText->getLocalBounds();
+    buttonText->setOrigin(textRect.left + textRect.width / 2.0f,
+                          textRect.top + textRect.height / 2.0f);
+
+    // buttonText->setOrigin(ShapeCenterX, ShapeCenterY);
+
+    buttonText->setPosition(ShapeCenterX, ShapeCenterY);
+    const float xTweak = 0.95f;
+    const float yTweak = 1.f;
+    // buttonText->setPosition(
+    //     this->shape->getPosition().x + xTweak * (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
+    //     this->shape->getPosition().y - (yTweak * (this->shape->getGlobalBounds().height / 2.f) - characterSize / 2.f)
+    // );
+}
+
+sf::Vector2f Button::GetPosition() {
+    return position;
+}
+
 bool blockInput = false;
 
 
@@ -92,5 +125,5 @@ void Button::OnPressed() {
 }
 
 void Button::Start() {
-    std::cout << "Button::Start()" << std::endl;
+    // std::cout << "Button::Start()" << std::endl;
 }

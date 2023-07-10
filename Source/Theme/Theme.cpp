@@ -15,6 +15,7 @@ sf::Color Theme::Red = sf::Color(231, 29, 54, 255);
 
 sf::Font Theme::Primary;
 sf::Font Theme::Secondary;
+sf::Font Theme::Mono;
 
 bool Theme::LoadFonts() {
     if (!Primary.loadFromFile("Source/Resources/Fonts/acumin-pro-bold.ttf")) {
@@ -27,5 +28,13 @@ bool Theme::LoadFonts() {
         std::cout << "Error loading Secondary font" << std::endl;
         return false;
     }
+
+    if (!Mono.loadFromFile("Source/Resources/Fonts/azeret-mono-semibold.ttf")) {
+        // handle error
+        std::cout << "Error loading Secondary font" << std::endl;
+        return false;
+    }
+
+
     return true;
 }

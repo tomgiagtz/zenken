@@ -36,10 +36,11 @@ void GameLoop::Init() {
     // entityManager->RegisterEntity(*button);
 
 
-    Grid* grid = new Grid();
+    Grid* grid = new Grid(3);
     std::cout << grid->ToString();
 
-    GridView* gridView = new GridView(500, grid);
+    GridView* gridView = new GridView(grid, 900, 48);
+    gridView->SetPosition(window.getSize().x - 900 - 88, window.getSize().y / 2.f - 450.f);
     entityManager->RegisterEntity(*gridView);
     // grid->Clear();
     // std::cout << grid->ToString();

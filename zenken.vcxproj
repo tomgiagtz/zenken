@@ -143,6 +143,7 @@
         <ClCompile Include="Source\Game\Entity.cpp" />
         <ClCompile Include="Source\Game\EntityManager.cpp" />
         <ClCompile Include="Source\Game\GameLoop.cpp" />
+        <ClCompile Include="Source\Grid\Cage.cpp" />
         <ClCompile Include="Source\Grid\Cell.cpp" />
         <ClCompile Include="Source\Grid\Grid.cpp">
           <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -304,6 +305,7 @@
         <ClInclude Include="Source\Game\Entity.h" />
         <ClInclude Include="Source\Game\EntityManager.h" />
         <ClInclude Include="Source\Game\GameLoop.h" />
+        <ClInclude Include="Source\Grid\Cage.h" />
         <ClInclude Include="Source\Grid\Cell.h" />
         <ClInclude Include="Source\Grid\Grid.h" />
         <ClInclude Include="Source\Grid\GridView.h" />

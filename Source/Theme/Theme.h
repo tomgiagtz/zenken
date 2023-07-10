@@ -12,6 +12,7 @@ extern sf::Color DarkCharcoal;
 extern sf::Color Red;
 extern sf::Font Primary;
 extern sf::Font Secondary;
+extern sf::Font Mono;
 
 bool LoadFonts();
 }

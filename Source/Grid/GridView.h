@@ -14,12 +14,13 @@ private:
     unsigned width;
     Grid* grid;
     Button** buttons;
+    sf::Vector2f position;
 
 public:
-    GridView(unsigned _width, Grid* _grid) : width(_width), grid(_grid) {
+    GridView(Grid* _grid, const unsigned _width, const unsigned _padding = 10, const sf::Vector2f _position = sf::Vector2f(0, 0)) : width(_width), grid(_grid), position(_position) {
         const unsigned gridSize = grid->GetSize();
 
-        buttons = ButtonsFromGrid(_width, _grid);
+        buttons = ButtonsFromGrid(_grid, _width, _padding, _position);
         for (unsigned int i = 0; i < grid->GetSize() * grid->GetSize(); ++i) {
             EntityManager::Instance().RegisterEntity(*buttons[i]);
         }
@@ -38,17 +39,28 @@ public:
         buttons = new Button*[width * width];
     }
 
-    static Button** ButtonsFromGrid(unsigned _width, Grid* grid) {
+    void SetPosition(float _x, float _y) {
+        position.x = _x;
+        position.y = _y;
         const unsigned gridSize = grid->GetSize();
-        const unsigned padding = 10;
+        for (unsigned int i = 0; i < gridSize * gridSize; i++) {
+            sf::Vector2f buttonPos = buttons[i]->GetPosition();
+            buttons[i]->SetPosition(buttonPos + position);
+        }
+    }
 
-        const unsigned buttonSize = (_width - (padding * (gridSize + 1))) / gridSize;
+    static Button** ButtonsFromGrid(Grid* _grid, const unsigned _width, const unsigned _padding = 10, const sf::Vector2f _position = sf::Vector2f(0, 0)) {
+        const unsigned gridSize = _grid->GetSize();
 
+        const unsigned buttonSize = (_width - (_padding * (gridSize + 1))) / gridSize;
+        std::cout << "Button size: " << buttonSize << std::endl;
         Button** _buttons = new Button*[gridSize * gridSize];
         for (unsigned int i = 0; i < gridSize * gridSize; i++) {
-            Cell* cell = grid->GetCell(i % gridSize, i / gridSize);
+            Cell* cell = _grid->GetCell(i % gridSize, i / gridSize);
             _buttons[i] = new Button(buttonSize, buttonSize, std::to_string(cell->GetValue()));
-            _buttons[i]->SetPosition(padding + (i % gridSize) * (buttonSize + padding), padding + (i / gridSize) * (buttonSize + padding));
+            unsigned xPos = _padding + (i % gridSize) * (buttonSize + _padding);
+            unsigned yPos = _padding + (i / gridSize) * (buttonSize + _padding);
+            _buttons[i]->SetPosition(xPos + _position.x, yPos + _position.y);
             // _buttons[i]->SetText(std::to_string(cell->GetValue()));
         }
 

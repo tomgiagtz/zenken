@@ -2,7 +2,6 @@
 
 #include "EntityManager.h"
 #include "../Input/Button.h"
-#include "../Theme/Theme.h"
 
 class GameLoop {
 private:
