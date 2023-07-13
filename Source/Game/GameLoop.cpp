@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "../Grid/Cage.h"
 #include "../Grid/Grid.h"
 #include "../Grid/GridView.h"
 
@@ -21,6 +22,7 @@ void GameLoop::Init() {
     entityManager = &EntityManager::Instance();
     Theme::LoadFonts();
     // sf::RenderWindow window(sf::VideoMode(720, 480), "ZenKen");
+    window.clear(Theme::DarkDun);
     sf::CircleShape shape(100.f);
 
 
@@ -37,6 +39,14 @@ void GameLoop::Init() {
 
 
     Grid* grid = new Grid(3);
+    Cage* cage = new Cage();
+    cage->Add(grid->GetCell(0));
+    cage->Add(grid->GetCell(1));
+    cage->Add(grid->GetCell(2));
+    cage->Add(grid->GetCell(7));
+
+    std::cout << "Cage is valid: " + std::to_string(cage->IsValid()) << std::endl;
+    std::cout << "Cage: " + cage->ToString() << std::endl;
     std::cout << grid->ToString();
 
     GridView* gridView = new GridView(grid, 900, 48);
@@ -69,7 +79,7 @@ void GameLoop::Update() {
 
 
     //test
-    window.clear(sf::Color::Black);
+    window.clear(Theme::DarkCharcoal);
     entityManager->RenderEntities(window);
     // window.draw(*button);
     window.display();

@@ -39,7 +39,7 @@ public:
         buttons = new Button*[width * width];
     }
 
-    void SetPosition(float _x, float _y) {
+    void SetPosition(const float _x, const float _y) {
         position.x = _x;
         position.y = _y;
         const unsigned gridSize = grid->GetSize();
@@ -57,10 +57,10 @@ public:
         Button** _buttons = new Button*[gridSize * gridSize];
         for (unsigned int i = 0; i < gridSize * gridSize; i++) {
             Cell* cell = _grid->GetCell(i % gridSize, i / gridSize);
-            _buttons[i] = new Button(buttonSize, buttonSize, std::to_string(cell->GetValue()));
+            _buttons[i] = new Button(buttonSize, buttonSize, std::to_string(cell->GetIndex()));
             unsigned xPos = _padding + (i % gridSize) * (buttonSize + _padding);
             unsigned yPos = _padding + (i / gridSize) * (buttonSize + _padding);
-            _buttons[i]->SetPosition(xPos + _position.x, yPos + _position.y);
+            _buttons[i]->SetPosition(_position.x + xPos, _position.y + yPos);
             // _buttons[i]->SetText(std::to_string(cell->GetValue()));
         }
 
