@@ -308,6 +308,7 @@
         <ClInclude Include="Source\Grid\Cage.h" />
         <ClInclude Include="Source\Grid\Cell.h" />
         <ClInclude Include="Source\Grid\Grid.h" />
+        <ClInclude Include="Source\Grid\GridSettings.h" />
         <ClInclude Include="Source\Grid\GridView.h" />
         <ClInclude Include="Source\Input\Button.h" />
         <ClInclude Include="Source\Theme\Theme.h" />

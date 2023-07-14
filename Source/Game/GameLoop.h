@@ -21,7 +21,8 @@ public:
 
     void Update();
 
-    GameLoop() : button(CreateButton()), window(sf::VideoMode(1920, 1080), "ZenKen") {
+    GameLoop() :
+        button(CreateButton()), window(sf::VideoMode(1920, 1080), "ZenKen") {
         Init();
     }
 };

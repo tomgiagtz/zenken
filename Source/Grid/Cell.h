@@ -5,7 +5,8 @@
 class Cell {
 public:
     //these default values are trash, because default constructor is used in std::vector<Cell>
-    Cell(const unsigned int _x = 0, const unsigned int _y = 0, const unsigned int _gridSize = 0, const unsigned int _value = 0) : position(_x, _y), gridSize(_gridSize), value(_value) { }
+    Cell(const unsigned int _x = 0, const unsigned int _y = 0, const unsigned int _gridSize = 0, const unsigned int _value = 0) :
+        position(_x, _y), gridSize(_gridSize), value(_value) { }
 
     sf::Vector2i GetPosition() const {
         return position;
