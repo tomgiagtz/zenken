@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "Puzzle.h"
 #include "../Grid/Cage.h"
 #include "../Grid/Grid.h"
 #include "../Grid/GridView.h"
@@ -21,39 +22,12 @@ void GameLoop::Init() {
     isRunning = true;
     entityManager = &EntityManager::Instance();
     Theme::LoadFonts();
-    // sf::RenderWindow window(sf::VideoMode(720, 480), "ZenKen");
     window.clear(Theme::DarkDun);
-    sf::CircleShape shape(100.f);
-
-
-    shape.setFillColor(sf::Color::Green);
 
     sf::Vector2u size = window.getSize();
-    unsigned int width = size.x;
-    unsigned int height = size.y;
+    sf::Vector2f puzzlePosition = sf::Vector2f(size.x - 900 - 88, size.y / 2 - 450.f);
 
-    // button->SetPosition(360, 240);
-    // button->SetSize(240, 80);
-    //
-    // entityManager->RegisterEntity(*button);
-
-
-    Grid* grid = new Grid(3);
-    Cage* cage = new Cage();
-    cage->Add(grid->GetCell(0));
-    cage->Add(grid->GetCell(1));
-    cage->Add(grid->GetCell(2));
-    cage->Add(grid->GetCell(7));
-
-    std::cout << "Cage is valid: " + std::to_string(cage->IsValid()) << std::endl;
-    std::cout << "Cage: " + cage->ToString() << std::endl;
-    std::cout << grid->ToString();
-
-    GridView* gridView = new GridView(grid, 900, 48);
-    gridView->SetPosition(window.getSize().x - 900 - 88, window.getSize().y / 2.f - 450.f);
-    entityManager->RegisterEntity(*gridView);
-    // grid->Clear();
-    // std::cout << grid->ToString();
+    Puzzle puzzle = Puzzle(puzzlePosition, 3, 900);
 }
 
 void GameLoop::Update() {

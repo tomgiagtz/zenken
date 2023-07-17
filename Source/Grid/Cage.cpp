@@ -27,12 +27,12 @@ bool Cage::IsValid() {
     for (const Cell* currCell : cells) {
         std::cout << "Checking cell at index: " << std::to_string(currCell->GetIndex()) << ". ";
         bool hasNeighbor = false;
-        const sf::Vector2i currPosition = currCell->GetPosition();
+        const sf::Vector2u currPosition = currCell->GetPosition();
         for (const Cell* potentialNeighbor : cells) {
             if (currCell == potentialNeighbor) continue;
-            const sf::Vector2i potentialNeighborPosition = potentialNeighbor->GetPosition();
-            const bool isHoriz = abs(currPosition.y - potentialNeighborPosition.y) <= 1;
-            const bool isVert = abs(currPosition.x - potentialNeighborPosition.x) <= 1;
+            const sf::Vector2u potentialNeighborPosition = potentialNeighbor->GetPosition();
+            const bool isHoriz = abs(static_cast<int>(currPosition.y - potentialNeighborPosition.y)) <= 1;
+            const bool isVert = abs(static_cast<int>(currPosition.x - potentialNeighborPosition.x)) <= 1;
 
             if (isHoriz && isVert) {
                 hasNeighbor = true;

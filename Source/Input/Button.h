@@ -70,22 +70,19 @@ public:
         buttonText->setString("Hello");
         buttonText->setFillColor(Theme::DarkCharcoal);
         buttonText->setCharacterSize(_characterSize);
-        buttonText->setPosition(
-            this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
-            this->shape->getPosition().y
-        );
+        buttonText->setPosition(this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f, this->shape->getPosition().y);
 
         // Set color
         this->shape->setFillColor(_idleColor);
     }
 
     // default constructor
-    Button(unsigned _xSize = 20, unsigned _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
+    Button(const float _xSize = 20, const float _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
         isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor) {
         // Set button shape
         shape = new sf::RectangleShape(sf::Vector2f(_xSize, _ySize));
         position = shape->getPosition();
-        characterSize = _ySize - 12;
+        characterSize = static_cast<int>(_ySize) - 12;
         // Set button text
         buttonText = new sf::Text();
         buttonText->setFont(Theme::Mono);
@@ -118,10 +115,7 @@ public:
 
     void SetText(std::string _text) {
         buttonText->setString(_text);
-        buttonText->setPosition(
-            this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f,
-            this->shape->getPosition().y
-        );
+        buttonText->setPosition(this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f, this->shape->getPosition().y);
     }
 
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;

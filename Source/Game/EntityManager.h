@@ -7,6 +7,7 @@ public:
     void RenderEntities(sf::RenderWindow& _window);
     void RegisterEntity(Entity& _entity);
 
+
     static EntityManager& Instance() {
         static EntityManager* instance = new EntityManager();
         return *instance;

@@ -5,6 +5,7 @@
 // uniqueness is enforced by the set
 // lowest index will always be the top most then left most (for placing operation symbol)
 #include <set>
+#include <stdexcept>
 #include <string>
 
 #include "Cell.h"
@@ -22,7 +23,7 @@ public:
     bool IsValid();
 
     bool Contains(Cell* _cell) {
-        return false;
+        return cells.find(_cell) != cells.end();
     }
 
     bool Add(Cell* _cell) {
@@ -48,6 +49,20 @@ public:
         }
         result.replace(result.length() - 2, 2, "]");
         return result;
+    }
+
+    Cell* GetCell(const unsigned int _index) {
+        if (_index >= cells.size()) {
+            throw std::out_of_range("Index out of range");
+        }
+        unsigned int i = 0;
+        for (Cell* cell : cells) {
+            if (i == _index) {
+                return cell;
+            }
+            i++;
+        }
+        return nullptr;
     }
 
 

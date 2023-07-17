@@ -5,15 +5,15 @@
 class Cell {
 public:
     //these default values are trash, because default constructor is used in std::vector<Cell>
-    Cell(const unsigned int _x = 0, const unsigned int _y = 0, const unsigned int _gridSize = 0, const unsigned int _value = 0) :
+    Cell(const unsigned _x = 0, const unsigned _y = 0, const unsigned int _gridSize = 0, const unsigned int _value = 0) :
         position(_x, _y), gridSize(_gridSize), value(_value) { }
 
-    sf::Vector2i GetPosition() const {
+    sf::Vector2u GetPosition() const {
         return position;
     }
 
     unsigned int GetIndex() const {
-        return position.y * gridSize + position.x;
+        return static_cast<int>(position.y * gridSize + position.x);
     }
 
     unsigned int GetValue() const {
@@ -37,17 +37,17 @@ public:
         return GetIndex() < _other.GetIndex();
     }
 
-    Cell& operator=(const Cell& other) {
-        if (this != &other) {
-            this->position = other.position;
-            this->gridSize = other.gridSize;
-            this->value = other.value;
+    Cell& operator=(const Cell& _other) {
+        if (this != &_other) {
+            this->position = _other.position;
+            this->gridSize = _other.gridSize;
+            this->value = _other.value;
         }
         return *this;
     }
 
 private:
-    sf::Vector2i position;
+    sf::Vector2u position;
     unsigned int gridSize;
     unsigned int value;
 };
