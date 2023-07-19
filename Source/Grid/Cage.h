@@ -7,11 +7,20 @@
 #include <set>
 #include <stdexcept>
 #include <string>
+#include <array>
 
 #include "Cell.h"
 
 class Cage {
-    std::set<Cell*> cells;
+    struct CompareCells {
+        bool operator()(const Cell* lhs, const Cell* rhs) const {
+            // Here we dereference the pointers and compare the Cell objects.
+            // The '<' operator must be correctly defined for the Cell class.
+            return *lhs < *rhs;
+        }
+    };
+
+    std::set<Cell*, CompareCells> cells;
     char operation = 'c';
 
 public:
@@ -25,6 +34,17 @@ public:
     bool Contains(Cell* _cell) {
         return cells.find(_cell) != cells.end();
     }
+
+    bool Contains(sf::Vector2u _position) {
+        for (Cell* cell : cells) {
+            if (cell->GetPosition() == _position) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    std::array<bool, 4> GetCellNeighborsInCage(const Cell* _cell);
 
     bool Add(Cell* _cell) {
         cells.insert(_cell);
@@ -64,6 +84,18 @@ public:
         }
         return nullptr;
     }
+
+    std::set<Cell*, CompareCells> GetCells() {
+        return cells;
+    }
+
+    unsigned GetSize() {
+        return cells.size();
+    }
+
+
+
+
 
 
 

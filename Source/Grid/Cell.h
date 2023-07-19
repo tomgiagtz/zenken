@@ -30,7 +30,7 @@ public:
     }
 
     bool operator ==(const Cell& _other) const {
-        return position == _other.position;
+        return position == _other.position && gridSize == _other.gridSize && value == _other.value;
     }
 
     bool operator <(const Cell& _other) const {
@@ -50,4 +50,6 @@ private:
     sf::Vector2u position;
     unsigned int gridSize;
     unsigned int value;
+
+
 };

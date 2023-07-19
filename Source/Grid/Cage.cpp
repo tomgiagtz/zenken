@@ -47,3 +47,14 @@ bool Cage::IsValid() {
     }
     return true;
 }
+
+std::array<bool, 4> Cage::GetCellNeighborsInCage(const Cell* _cell) {
+    std::array<bool, 4> res = {false};
+    const sf::Vector2u currPosition = _cell->GetPosition();
+    //up right down left
+    res[0] = this->Contains(currPosition - sf::Vector2u(0, 1));
+    res[1] = this->Contains(currPosition + sf::Vector2u(1, 0));
+    res[2] = this->Contains(currPosition + sf::Vector2u(0, 1));
+    res[3] = this->Contains(currPosition - sf::Vector2u(1, 0));
+    return res;
+}

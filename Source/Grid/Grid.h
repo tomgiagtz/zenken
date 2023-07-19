@@ -53,6 +53,8 @@ public:
         return &grid[position.x][position.y];
     }
 
+
+
     void Clear() {
         for (unsigned int i = 0; i < size; i++) {
             for (unsigned int j = 0; j < size; ++j) {

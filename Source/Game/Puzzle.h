@@ -24,7 +24,7 @@ public:
         cageView = new CageView(&cages, settings);
         EntityManager::Instance().RegisterEntity(*cageView);
 
-        std::cout << "Cage is valid: " + std::to_string(cage->IsValid()) << std::endl;
+        // std::cout << "Cage is valid: " + std::to_string(cage->IsValid()) << std::endl;
         std::cout << "Cage: " + cage->ToString() << std::endl;
         std::cout << grid->ToString();
     }

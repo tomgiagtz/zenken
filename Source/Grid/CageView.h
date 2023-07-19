@@ -25,12 +25,10 @@ public:
 
     CageView(std::vector<Cage*>* _cages, const GridSettings& _gridSettings) :
         gridSettings(_gridSettings), cages(_cages) {
-        Cell* cell1 = cages[0][0]->GetCell(0);
-        DrawEdge(Top, cell1);
-        DrawEdge(Bottom, cell1);
-        DrawEdge(Left, cell1);
-        DrawEdge(Right, cell1);
+        DrawCage(_cages[0][0]);
     }
+
+    void DrawCage(Cage* _cage);
 
 
     GridSettings gridSettings;

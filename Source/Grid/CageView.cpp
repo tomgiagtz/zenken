@@ -15,7 +15,8 @@ void CageView::Update(float _deltaTime, const sf::RenderWindow* _window, const s
 
 
 void CageView::DrawEdge(CellSide _side, const Cell* _cell) {
-    const int edgeLength = gridSettings.cellSize + 2 * (gridSettings.edgeWidth + gridSettings.edgePadding);
+    const int edgeLength = gridSettings.cellSize + gridSettings.padding; //(gridSettings.edgeWidth + gridSettings.edgePadding);
+    // if cell to the right has an upper edge, use padding
     const int edgeOffset = gridSettings.edgeWidth + gridSettings.edgePadding;
 
 
@@ -55,4 +56,15 @@ void CageView::DrawEdge(CellSide _side, const Cell* _cell) {
 
     edge->setFillColor(Theme::Orange);
     edges.push_back(*edge);
+}
+
+void CageView::DrawCage(Cage* _cage) {
+    for (Cell* cell : _cage->GetCells()) {
+        std::array<bool, 4> neighbors = _cage->GetCellNeighborsInCage(cell);
+        for (unsigned i = 0; i < neighbors.size(); i++) {
+            if (!neighbors[i]) {
+                DrawEdge(static_cast<CellSide>(i), cell);
+            }
+        }
+    }
 }
