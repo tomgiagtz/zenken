@@ -21,11 +21,13 @@ public:
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;
     ~CageView() override = default;
 
-    void DrawEdge(CellSide _side, const Cell* _cell);
+    void DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _neighbors);
 
     CageView(std::vector<Cage*>* _cages, const GridSettings& _gridSettings) :
         gridSettings(_gridSettings), cages(_cages) {
-        DrawCage(_cages[0][0]);
+        for (Cage* cage : *_cages) {
+            DrawCage(cage);
+        }
     }
 
     void DrawCage(Cage* _cage);

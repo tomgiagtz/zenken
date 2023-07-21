@@ -15,11 +15,17 @@ public:
         EntityManager::Instance().RegisterEntity(*gridView);
 
         Cage* cage = new Cage();
+        cage->Add(grid->GetCell(6));
+        cage->Add(grid->GetCell(3));
+        cage->Add(grid->GetCell(4));
         cage->Add(grid->GetCell(0));
-        cage->Add(grid->GetCell(1));
-        cage->Add(grid->GetCell(2));
-        cage->Add(grid->GetCell(7));
-        cages = std::vector<Cage*>({cage});
+        Cage* cage2 = new Cage();
+        cage2->Add(grid->GetCell(8));
+        cage2->Add(grid->GetCell(5));
+        cage2->Add(grid->GetCell(2));
+        cage2->Add(grid->GetCell(7));
+        cage2->Add(grid->GetCell(1));
+        cages = std::vector<Cage*>({cage, cage2});
 
         cageView = new CageView(&cages, settings);
         EntityManager::Instance().RegisterEntity(*cageView);

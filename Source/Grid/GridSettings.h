@@ -5,7 +5,7 @@ struct GridSettings {
     unsigned gridSize;
     unsigned width;
     sf::Vector2f position;
-    unsigned padding;
+    int padding;
     unsigned cellSize;
     unsigned edgeWidth;
     unsigned edgePadding;
@@ -19,7 +19,7 @@ struct GridSettings {
      * \param _width size of square
      * \param _padding space between cells
      */
-    GridSettings(const unsigned _gridSize = 3, const sf::Vector2f _position = sf::Vector2f(0, 0), const unsigned _width = 900, const unsigned _padding = 48, const unsigned _edgeWidth = 4, const unsigned _edgePadding = 10) :
+    GridSettings(const unsigned _gridSize = 3, const sf::Vector2f _position = sf::Vector2f(0, 0), const unsigned _width = 900, const int _padding = 48, const unsigned _edgeWidth = 4, const unsigned _edgePadding = 10) :
         gridSize(_gridSize), width(_width), position(_position), padding(_padding), edgeWidth(_edgeWidth), edgePadding(_edgePadding) {
         cellSize = (width - (padding * (_gridSize + 1))) / _gridSize;
     }
