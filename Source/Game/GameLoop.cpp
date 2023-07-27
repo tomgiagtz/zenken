@@ -27,7 +27,7 @@ void GameLoop::Init() {
     sf::Vector2u size = window.getSize();
     sf::Vector2f puzzlePosition = sf::Vector2f(size.x - 900 - 88, size.y / 2 - 450.f);
 
-    Puzzle puzzle = Puzzle(puzzlePosition, 3, 900);
+    Puzzle puzzle = Puzzle(puzzlePosition, 7, 900);
 }
 
 void GameLoop::Update() {

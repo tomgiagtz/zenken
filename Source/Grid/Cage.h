@@ -8,6 +8,8 @@
 #include <stdexcept>
 #include <string>
 #include <array>
+#include <vector>
+#include <cstdarg>
 
 #include "Cell.h"
 
@@ -54,6 +56,13 @@ public:
         cells.erase(_cell);
         return false;
     }
+
+    void Add(std::vector<Cell*> _cells) {
+        for (Cell* cell : _cells) {
+            this->Add(cell);
+        }
+    }
+
 
     void UnsafeAdd(Cell* _cell) {
         cells.insert(_cell);

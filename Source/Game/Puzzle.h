@@ -15,16 +15,10 @@ public:
         EntityManager::Instance().RegisterEntity(*gridView);
 
         Cage* cage = new Cage();
-        cage->Add(grid->GetCell(6));
-        cage->Add(grid->GetCell(3));
-        cage->Add(grid->GetCell(4));
-        cage->Add(grid->GetCell(0));
+        cage->Add(grid->GetCells({0, 1, 2}));
         Cage* cage2 = new Cage();
-        cage2->Add(grid->GetCell(8));
-        cage2->Add(grid->GetCell(5));
-        cage2->Add(grid->GetCell(2));
-        cage2->Add(grid->GetCell(7));
-        cage2->Add(grid->GetCell(1));
+        cage2->Add(grid->GetCells({3, 4, 5, 12, 19, 20, 27, 34, 41, 40, 39, 38, 37, 36, 29, 22, 23, 24, 31}));
+        // cage2->Add(grid->GetCell(1));
         cages = std::vector<Cage*>({cage, cage2});
 
         cageView = new CageView(&cages, settings);

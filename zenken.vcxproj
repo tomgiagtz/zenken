@@ -317,6 +317,9 @@
         <ClInclude Include="Source\Input\Button.h" />
         <ClInclude Include="Source\Theme\Theme.h" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Source\Generation\" />
+    </ItemGroup>
     <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
     <ImportGroup Label="ExtensionTargets">
     </ImportGroup>

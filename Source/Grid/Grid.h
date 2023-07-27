@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <initializer_list>
 #include "Cage.h"
 #include "Cell.h"
 
@@ -62,6 +62,9 @@ public:
             }
         }
     }
+
+    std::vector<Cell*> GetCells(std::initializer_list<unsigned int> _indices);
+
 
     std::string ToString() const {
         std::string result;
