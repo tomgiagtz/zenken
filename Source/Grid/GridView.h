@@ -49,6 +49,6 @@ public:
 
     void SetPosition(float _x, float _y);
 
-    static Button** ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings);
-    void OnButtonSelected();
+    Button** ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings);
+    void OnButtonSelected(int _index);
 };

@@ -28,8 +28,8 @@ void GridView::SetPosition(const float _x, const float _y) {
     }
 }
 
-void GridView::OnButtonSelected() {
-    std::cout << "Button selected" << std::endl;
+void GridView::OnButtonSelected(int _index) {
+    std::cout << "Button " + std::to_string(_index) + " selected" << std::endl;
 }
 
 Button** GridView::ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings) {
@@ -39,7 +39,10 @@ Button** GridView::ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSetting
     Button** _buttons = new Button*[gridSize * gridSize];
     for (unsigned int i = 0; i < gridSize * gridSize; i++) {
         Cell* cell = _grid->GetCell(i % gridSize, i / gridSize);
-        _buttons[i] = new Button(buttonSize, buttonSize, std::to_string(cell->GetIndex()));
+        _buttons[i] = new Button(cell->GetIndex(), buttonSize, buttonSize, std::to_string(cell->GetIndex()));
+        _buttons[i]->SetOnSelectedCallback([this](int id) {
+            OnButtonSelected(id);
+        });
         unsigned xPos = _gridSettings.padding + (i % gridSize) * (buttonSize + _gridSettings.padding);
         unsigned yPos = _gridSettings.padding + (i / gridSize) * (buttonSize + _gridSettings.padding);
         _buttons[i]->SetPosition(_gridSettings.position.x + xPos, _gridSettings.position.y + yPos);

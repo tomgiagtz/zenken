@@ -1,15 +1,19 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
 // #include <memory>
+#include <functional>
 #include <iostream>
 
 #include "../Game/Entity.h"
 #include "../Theme/Theme.h"
+// #include "../Grid/GridView.h"
 
 class Button : public Entity {
-
+public:
+    using Callback = std::function<void(int)>;
 
 private:
+    int buttonId = 0;
     sf::RectangleShape* shape;
     bool isSelectable;
     bool isSelected = false;
@@ -20,8 +24,10 @@ private:
     sf::Color activeColor;
     unsigned int characterSize = 16;
 
+
     sf::Vector2f position;
 
+    std::function<void(int)> onSelectedCallback;
 
 
 
@@ -34,6 +40,7 @@ private:
 
     ButtonState state = BTN_IDLE;
     ButtonState prevState = BTN_IDLE;
+
 
     // Implement the sf::Drawable interface
     void draw(sf::RenderTarget& _target, sf::RenderStates _states) const override {
@@ -61,6 +68,12 @@ public:
     //     this->shape->setFillColor(_idleColor);
     // }
 
+
+
+    void SetOnSelectedCallback(Callback _callback) {
+        this->onSelectedCallback = _callback;
+    }
+
     Button(sf::RectangleShape* _shape, std::string _text = "press", unsigned int _characterSize = 48, bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
         shape(_shape), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor), characterSize(_characterSize) {
         // Set button text
@@ -77,8 +90,8 @@ public:
     }
 
     // default constructor
-    Button(const float _xSize = 20, const float _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
-        isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor) {
+    Button(const int _id = 0, const float _xSize = 20, const float _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
+        buttonId(_id), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor) {
         // Set button shape
         shape = new sf::RectangleShape(sf::Vector2f(_xSize, _ySize));
         position = shape->getPosition();
@@ -113,6 +126,14 @@ public:
         shape->setSize(sf::Vector2f(_x, _y));
     }
 
+    void SetID(int _id) {
+        buttonId = _id;
+    }
+
+    int GetID() {
+        return buttonId;
+    }
+
     void SetText(std::string _text) {
         buttonText->setString(_text);
         buttonText->setPosition(this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f, this->shape->getPosition().y);
@@ -131,7 +152,7 @@ public:
 
     bool IsSelected() const {
         return isSelectable && isSelected;
-    };
+    }
 
     //if selectable use these
     void OnDeselected();

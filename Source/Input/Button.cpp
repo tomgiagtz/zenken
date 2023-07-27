@@ -58,8 +58,7 @@ void Button::SetPosition(float _x, float _y) {
     // const float TextCenterY = (buttonText->getGlobalBounds().height / 2.f) + characterSize / 2.f;
 
     sf::FloatRect textRect = buttonText->getLocalBounds();
-    buttonText->setOrigin(textRect.left + textRect.width / 2.0f,
-                          textRect.top + textRect.height / 2.0f);
+    buttonText->setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 
     // buttonText->setOrigin(ShapeCenterX, ShapeCenterY);
 
@@ -117,7 +116,10 @@ void Button::OnDeselected() {
 }
 
 void Button::OnSelected() {
-    std::cout << "Button::OnSelected()" << std::endl;
+    // std::cout << "Button::OnSelected()" << std::endl;
+    if (onSelectedCallback) {
+        onSelectedCallback(buttonId);
+    }
 }
 
 void Button::OnPressed() {
