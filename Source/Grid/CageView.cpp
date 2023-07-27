@@ -88,7 +88,6 @@ void CageView::DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _
             leftShift = edgeOffset;
             //unless edge is not a neighbor
             if (!_neighbors[_side]) {
-                std::cout << "hello0" << std::endl;
                 leftShift = gridSettings.padding - edgeOffset + gridSettings.edgeWidth;
                 edgeLength += gridSettings.padding - gridSettings.edgeWidth;
                 color = Theme::Black;
@@ -111,7 +110,6 @@ void CageView::DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _
             topShift = edgeOffset;
             //unless edge is not a neighbor
             if (!_neighbors[_side]) {
-                std::cout << "hello0" << std::endl;
                 topShift = gridSettings.padding - edgeOffset + gridSettings.edgeWidth;
                 edgeLength += gridSettings.padding - gridSettings.edgeWidth;
                 color = Theme::Black;

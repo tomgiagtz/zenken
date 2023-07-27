@@ -11,8 +11,6 @@ private:
     unsigned int size;
     std::vector<std::vector<Cell>> grid;
     std::vector<Cage> cages;
-    // Replace the current grid with a new one
-    void Replace();
 
 public:
     Grid(const unsigned int _size = 5) :

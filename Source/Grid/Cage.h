@@ -9,7 +9,6 @@
 #include <string>
 #include <array>
 #include <vector>
-#include <cstdarg>
 
 #include "Cell.h"
 
@@ -17,7 +16,7 @@ class Cage {
     struct CompareCells {
         bool operator()(const Cell* lhs, const Cell* rhs) const {
             // Here we dereference the pointers and compare the Cell objects.
-            // The '<' operator must be correctly defined for the Cell class.
+            // The '<' operator must be correctly defined for the Cell class to be used in a Set
             return *lhs < *rhs;
         }
     };
