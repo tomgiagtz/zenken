@@ -1,9 +1,9 @@
 ﻿#pragma once
-#include "Grid.h"
-#include "GridSettings.h"
-#include "../Game/Entity.h"
-#include "../Game/EntityManager.h"
-#include "../Input/Button.h"
+#include "../Models/Grid.h"
+#include "../GridSettings.h"
+#include "../../Game/Entity.h"
+#include "../../Game/EntityManager.h"
+#include "../../Input/Button.h"
 
 class GridView : public Entity {
 
@@ -13,7 +13,7 @@ protected:
 
 private:
     Grid* grid;
-    Button** buttons;
+    std::vector<Button*> buttons;
     GridSettings gridSettings;
 
 public:
@@ -45,10 +45,10 @@ public:
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;
 
 
-    void SetGrid(Grid* _grid);
+    // void SetGrid(Grid* _grid);
 
     void SetPosition(float _x, float _y);
 
-    Button** ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings);
+    std::vector<Button*> ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings);
     void OnButtonSelected(int _index);
 };

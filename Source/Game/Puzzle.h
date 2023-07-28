@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include <vector>
 #include "EntityManager.h"
-#include "../Grid/Cage.h"
-#include "../Grid/Grid.h"
-#include "../Grid/GridView.h"
-#include "../Grid/CageView.h"
+#include "../Grid/Models/Cage.h"
+#include "../Grid/Models/Grid.h"
+#include "../Grid/Views/GridView.h"
+#include "../Grid/Views/CageView.h"
 
 class Puzzle {
 public:

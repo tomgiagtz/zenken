@@ -1,23 +1,24 @@
 ﻿#include "GridView.h"
 
 void GridView::draw(sf::RenderTarget& _target, sf::RenderStates _states) const {
-    for (unsigned int i = 0; i < grid->GetSize() * grid->GetSize(); ++i) {
-        _target.draw(*buttons[i], _states);
+    for (Button* button : buttons) {
+        _target.draw(*button, _states);
     }
 }
 
 void GridView::Start() { }
 void GridView::Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) {}
 
-void GridView::SetGrid(Grid* _grid) {
-    const unsigned gridSize2 = gridSettings.gridSize * gridSettings.gridSize;
-    for (unsigned int i = 0; i < gridSize2; ++i) {
-        delete buttons[i];
-    }
-    grid = _grid;
-    delete[] buttons;
-    buttons = new Button*[gridSize2];
-}
+// old array version
+// void GridView::SetGrid(Grid* _grid) {
+//     const unsigned gridSize2 = gridSettings.gridSize * gridSettings.gridSize;
+//     for (unsigned int i = 0; i < gridSize2; ++i) {
+//         delete buttons[i];
+//     }
+//     grid = _grid;
+//     delete[] buttons;
+//     buttons = new Button*[gridSize2];
+// }
 
 void GridView::SetPosition(const float _x, const float _y) {
     gridSettings.position = sf::Vector2f(_x, _y);
@@ -32,14 +33,15 @@ void GridView::OnButtonSelected(int _index) {
     std::cout << "Button " + std::to_string(_index) + " selected" << std::endl;
 }
 
-Button** GridView::ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings) {
+std::vector<Button*> GridView::ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings) {
     const unsigned gridSize = _gridSettings.gridSize;
     const unsigned buttonSize = (_gridSettings.width - (_gridSettings.padding * (gridSize + 1))) / gridSize;
     std::cout << "Button size: " << buttonSize << std::endl;
-    Button** _buttons = new Button*[gridSize * gridSize];
+    std::vector<Button*> _buttons;
+    buttons.reserve(gridSize * gridSize);
     for (unsigned int i = 0; i < gridSize * gridSize; i++) {
         Cell* cell = _grid->GetCell(i % gridSize, i / gridSize);
-        _buttons[i] = new Button(cell->GetIndex(), buttonSize, buttonSize, std::to_string(cell->GetIndex()));
+        _buttons.push_back(new Button(cell->GetIndex(), buttonSize, buttonSize, std::to_string(cell->GetIndex())));
         _buttons[i]->SetOnSelectedCallback([this](int id) {
             OnButtonSelected(id);
         });

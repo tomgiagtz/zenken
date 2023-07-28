@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Grid.h"
+#include "./Models/Grid.h"
 
 struct GridSettings {
     unsigned gridSize;

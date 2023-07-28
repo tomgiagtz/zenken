@@ -4,9 +4,6 @@
 #include <SFML/System/Clock.hpp>
 
 #include "Puzzle.h"
-#include "../Grid/Cage.h"
-#include "../Grid/Grid.h"
-#include "../Grid/GridView.h"
 
 Button* GameLoop::CreateButton() {
     sf::Vector2f squareSize(240.f, 120.f);

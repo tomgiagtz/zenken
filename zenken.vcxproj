@@ -144,10 +144,7 @@
         <ClCompile Include="Source\Game\EntityManager.cpp" />
         <ClCompile Include="Source\Game\GameLoop.cpp" />
         <ClCompile Include="Source\Game\Puzzle.cpp" />
-        <ClCompile Include="Source\Grid\Cage.cpp" />
-        <ClCompile Include="Source\Grid\CageView.cpp" />
-        <ClCompile Include="Source\Grid\Cell.cpp" />
-        <ClCompile Include="Source\Grid\Grid.cpp">
+        <ClCompile Include="Source\Grid\Models\Cage.cpp">
           <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
           <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
           <Optimization>Disabled</Optimization>
@@ -223,7 +220,310 @@
           <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
           <LinkCompiled>true</LinkCompiled>
         </ClCompile>
-        <ClCompile Include="Source\Grid\GridView.cpp" />
+        <ClCompile Include="Source\Grid\Models\Cell.cpp">
+          <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+          <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+          <Optimization>Disabled</Optimization>
+          <SupportJustMyCode>true</SupportJustMyCode>
+          <AssemblerOutput>NoListing</AssemblerOutput>
+          <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+          <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+          <BrowseInformation>false</BrowseInformation>
+          <BrowseInformationFile>Debug\</BrowseInformationFile>
+          <CompileAs>Default</CompileAs>
+          <ConformanceMode>true</ConformanceMode>
+          <DiagnosticsFormat>Column</DiagnosticsFormat>
+          <DisableLanguageExtensions>false</DisableLanguageExtensions>
+          <ErrorReporting>Prompt</ErrorReporting>
+          <ExpandAttributedSource>false</ExpandAttributedSource>
+          <ExceptionHandling>Sync</ExceptionHandling>
+          <EnableASAN>false</EnableASAN>
+          <EnableFuzzer>false</EnableFuzzer>
+          <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+          <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+          <FloatingPointModel>Precise</FloatingPointModel>
+          <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+          <GenerateModuleDependencies>false</GenerateModuleDependencies>
+          <GenerateSourceDependencies>false</GenerateSourceDependencies>
+          <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+          <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+          <IntrinsicFunctions>false</IntrinsicFunctions>
+          <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+          <LanguageStandard>Default</LanguageStandard>
+          <LanguageStandard_C>Default</LanguageStandard_C>
+          <MinimalRebuild>false</MinimalRebuild>
+          <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+          <ModuleOutputFile>Debug\</ModuleOutputFile>
+          <OmitDefaultLibName>false</OmitDefaultLibName>
+          <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+          <WholeProgramOptimization>false</WholeProgramOptimization>
+          <ObjectFileName>Debug\</ObjectFileName>
+          <CallingConvention>Cdecl</CallingConvention>
+          <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+          <PrecompiledHeader>NotUsing</PrecompiledHeader>
+          <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+          <PrecompiledHeaderOutputFile>Debug\zenken.pch</PrecompiledHeaderOutputFile>
+          <PreprocessToFile>false</PreprocessToFile>
+          <PreprocessKeepComments>false</PreprocessKeepComments>
+          <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+          <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+          <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+          <ShowIncludes>false</ShowIncludes>
+          <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+          <SuppressStartupBanner>true</SuppressStartupBanner>
+          <BufferSecurityCheck>true</BufferSecurityCheck>
+          <SmallerTypeCheck>false</SmallerTypeCheck>
+          <SpectreMitigation>false</SpectreMitigation>
+          <StructMemberAlignment>Default</StructMemberAlignment>
+          <TrackerLogDirectory>Debug\zenken.tlog\</TrackerLogDirectory>
+          <TranslateIncludes>false</TranslateIncludes>
+          <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+          <TreatWarningAsError>false</TreatWarningAsError>
+          <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+          <UseFullPaths>true</UseFullPaths>
+          <WarningLevel>Level3</WarningLevel>
+          <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+          <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+          <IntelJCCErratum>false</IntelJCCErratum>
+          <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+          <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+          <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+          <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+          <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+          <EnablePREfast>false</EnablePREfast>
+          <OmitFramePointers>false</OmitFramePointers>
+          <SDLCheck>true</SDLCheck>
+          <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
+          <LinkCompiled>true</LinkCompiled>
+        </ClCompile>
+        <ClCompile Include="Source\Grid\Models\Grid.cpp">
+          <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+          <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+          <Optimization>Disabled</Optimization>
+          <SupportJustMyCode>true</SupportJustMyCode>
+          <AssemblerOutput>NoListing</AssemblerOutput>
+          <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+          <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+          <BrowseInformation>false</BrowseInformation>
+          <BrowseInformationFile>Debug\</BrowseInformationFile>
+          <CompileAs>Default</CompileAs>
+          <ConformanceMode>true</ConformanceMode>
+          <DiagnosticsFormat>Column</DiagnosticsFormat>
+          <DisableLanguageExtensions>false</DisableLanguageExtensions>
+          <ErrorReporting>Prompt</ErrorReporting>
+          <ExpandAttributedSource>false</ExpandAttributedSource>
+          <ExceptionHandling>Sync</ExceptionHandling>
+          <EnableASAN>false</EnableASAN>
+          <EnableFuzzer>false</EnableFuzzer>
+          <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+          <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+          <FloatingPointModel>Precise</FloatingPointModel>
+          <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+          <GenerateModuleDependencies>false</GenerateModuleDependencies>
+          <GenerateSourceDependencies>false</GenerateSourceDependencies>
+          <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+          <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+          <IntrinsicFunctions>false</IntrinsicFunctions>
+          <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+          <LanguageStandard>Default</LanguageStandard>
+          <LanguageStandard_C>Default</LanguageStandard_C>
+          <MinimalRebuild>false</MinimalRebuild>
+          <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+          <ModuleOutputFile>Debug\</ModuleOutputFile>
+          <OmitDefaultLibName>false</OmitDefaultLibName>
+          <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+          <WholeProgramOptimization>false</WholeProgramOptimization>
+          <ObjectFileName>Debug\</ObjectFileName>
+          <CallingConvention>Cdecl</CallingConvention>
+          <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+          <PrecompiledHeader>NotUsing</PrecompiledHeader>
+          <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+          <PrecompiledHeaderOutputFile>Debug\zenken.pch</PrecompiledHeaderOutputFile>
+          <PreprocessToFile>false</PreprocessToFile>
+          <PreprocessKeepComments>false</PreprocessKeepComments>
+          <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+          <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+          <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+          <ShowIncludes>false</ShowIncludes>
+          <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+          <SuppressStartupBanner>true</SuppressStartupBanner>
+          <BufferSecurityCheck>true</BufferSecurityCheck>
+          <SmallerTypeCheck>false</SmallerTypeCheck>
+          <SpectreMitigation>false</SpectreMitigation>
+          <StructMemberAlignment>Default</StructMemberAlignment>
+          <TrackerLogDirectory>Debug\zenken.tlog\</TrackerLogDirectory>
+          <TranslateIncludes>false</TranslateIncludes>
+          <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+          <TreatWarningAsError>false</TreatWarningAsError>
+          <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+          <UseFullPaths>true</UseFullPaths>
+          <WarningLevel>Level3</WarningLevel>
+          <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+          <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+          <IntelJCCErratum>false</IntelJCCErratum>
+          <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+          <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+          <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+          <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+          <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+          <EnablePREfast>false</EnablePREfast>
+          <OmitFramePointers>false</OmitFramePointers>
+          <SDLCheck>true</SDLCheck>
+          <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
+          <LinkCompiled>true</LinkCompiled>
+        </ClCompile>
+        <ClCompile Include="Source\Grid\Views\CageView.cpp">
+          <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+          <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+          <Optimization>Disabled</Optimization>
+          <SupportJustMyCode>true</SupportJustMyCode>
+          <AssemblerOutput>NoListing</AssemblerOutput>
+          <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+          <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+          <BrowseInformation>false</BrowseInformation>
+          <BrowseInformationFile>Debug\</BrowseInformationFile>
+          <CompileAs>Default</CompileAs>
+          <ConformanceMode>true</ConformanceMode>
+          <DiagnosticsFormat>Column</DiagnosticsFormat>
+          <DisableLanguageExtensions>false</DisableLanguageExtensions>
+          <ErrorReporting>Prompt</ErrorReporting>
+          <ExpandAttributedSource>false</ExpandAttributedSource>
+          <ExceptionHandling>Sync</ExceptionHandling>
+          <EnableASAN>false</EnableASAN>
+          <EnableFuzzer>false</EnableFuzzer>
+          <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+          <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+          <FloatingPointModel>Precise</FloatingPointModel>
+          <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+          <GenerateModuleDependencies>false</GenerateModuleDependencies>
+          <GenerateSourceDependencies>false</GenerateSourceDependencies>
+          <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+          <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+          <IntrinsicFunctions>false</IntrinsicFunctions>
+          <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+          <LanguageStandard>Default</LanguageStandard>
+          <LanguageStandard_C>Default</LanguageStandard_C>
+          <MinimalRebuild>false</MinimalRebuild>
+          <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+          <ModuleOutputFile>Debug\</ModuleOutputFile>
+          <OmitDefaultLibName>false</OmitDefaultLibName>
+          <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+          <WholeProgramOptimization>false</WholeProgramOptimization>
+          <ObjectFileName>Debug\</ObjectFileName>
+          <CallingConvention>Cdecl</CallingConvention>
+          <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+          <PrecompiledHeader>NotUsing</PrecompiledHeader>
+          <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+          <PrecompiledHeaderOutputFile>Debug\zenken.pch</PrecompiledHeaderOutputFile>
+          <PreprocessToFile>false</PreprocessToFile>
+          <PreprocessKeepComments>false</PreprocessKeepComments>
+          <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+          <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+          <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+          <ShowIncludes>false</ShowIncludes>
+          <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+          <SuppressStartupBanner>true</SuppressStartupBanner>
+          <BufferSecurityCheck>true</BufferSecurityCheck>
+          <SmallerTypeCheck>false</SmallerTypeCheck>
+          <SpectreMitigation>false</SpectreMitigation>
+          <StructMemberAlignment>Default</StructMemberAlignment>
+          <TrackerLogDirectory>Debug\zenken.tlog\</TrackerLogDirectory>
+          <TranslateIncludes>false</TranslateIncludes>
+          <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+          <TreatWarningAsError>false</TreatWarningAsError>
+          <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+          <UseFullPaths>true</UseFullPaths>
+          <WarningLevel>Level3</WarningLevel>
+          <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+          <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+          <IntelJCCErratum>false</IntelJCCErratum>
+          <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+          <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+          <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+          <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+          <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+          <EnablePREfast>false</EnablePREfast>
+          <OmitFramePointers>false</OmitFramePointers>
+          <SDLCheck>true</SDLCheck>
+          <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
+          <LinkCompiled>true</LinkCompiled>
+        </ClCompile>
+        <ClCompile Include="Source\Grid\Views\GridView.cpp">
+          <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+          <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+          <Optimization>Disabled</Optimization>
+          <SupportJustMyCode>true</SupportJustMyCode>
+          <AssemblerOutput>NoListing</AssemblerOutput>
+          <AssemblerListingLocation>Debug\</AssemblerListingLocation>
+          <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+          <BrowseInformation>false</BrowseInformation>
+          <BrowseInformationFile>Debug\</BrowseInformationFile>
+          <CompileAs>Default</CompileAs>
+          <ConformanceMode>true</ConformanceMode>
+          <DiagnosticsFormat>Column</DiagnosticsFormat>
+          <DisableLanguageExtensions>false</DisableLanguageExtensions>
+          <ErrorReporting>Prompt</ErrorReporting>
+          <ExpandAttributedSource>false</ExpandAttributedSource>
+          <ExceptionHandling>Sync</ExceptionHandling>
+          <EnableASAN>false</EnableASAN>
+          <EnableFuzzer>false</EnableFuzzer>
+          <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+          <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+          <FloatingPointModel>Precise</FloatingPointModel>
+          <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+          <GenerateModuleDependencies>false</GenerateModuleDependencies>
+          <GenerateSourceDependencies>false</GenerateSourceDependencies>
+          <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+          <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+          <IntrinsicFunctions>false</IntrinsicFunctions>
+          <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+          <LanguageStandard>Default</LanguageStandard>
+          <LanguageStandard_C>Default</LanguageStandard_C>
+          <MinimalRebuild>false</MinimalRebuild>
+          <ModuleDependenciesFile>Debug\</ModuleDependenciesFile>
+          <ModuleOutputFile>Debug\</ModuleOutputFile>
+          <OmitDefaultLibName>false</OmitDefaultLibName>
+          <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+          <WholeProgramOptimization>false</WholeProgramOptimization>
+          <ObjectFileName>Debug\</ObjectFileName>
+          <CallingConvention>Cdecl</CallingConvention>
+          <ProgramDataBaseFileName>Debug\vc143.pdb</ProgramDataBaseFileName>
+          <PrecompiledHeader>NotUsing</PrecompiledHeader>
+          <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+          <PrecompiledHeaderOutputFile>Debug\zenken.pch</PrecompiledHeaderOutputFile>
+          <PreprocessToFile>false</PreprocessToFile>
+          <PreprocessKeepComments>false</PreprocessKeepComments>
+          <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+          <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+          <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+          <ShowIncludes>false</ShowIncludes>
+          <SourceDependenciesFile>Debug\</SourceDependenciesFile>
+          <SuppressStartupBanner>true</SuppressStartupBanner>
+          <BufferSecurityCheck>true</BufferSecurityCheck>
+          <SmallerTypeCheck>false</SmallerTypeCheck>
+          <SpectreMitigation>false</SpectreMitigation>
+          <StructMemberAlignment>Default</StructMemberAlignment>
+          <TrackerLogDirectory>Debug\zenken.tlog\</TrackerLogDirectory>
+          <TranslateIncludes>false</TranslateIncludes>
+          <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+          <TreatWarningAsError>false</TreatWarningAsError>
+          <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+          <UseFullPaths>true</UseFullPaths>
+          <WarningLevel>Level3</WarningLevel>
+          <XMLDocumentationFileName>Debug\</XMLDocumentationFileName>
+          <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+          <IntelJCCErratum>false</IntelJCCErratum>
+          <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+          <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+          <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+          <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+          <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+          <EnablePREfast>false</EnablePREfast>
+          <OmitFramePointers>false</OmitFramePointers>
+          <SDLCheck>true</SDLCheck>
+          <AdditionalIncludeDirectories>G:\Libraries\SFML-2.6.0\include</AdditionalIncludeDirectories>
+          <LinkCompiled>true</LinkCompiled>
+        </ClCompile>
         <ClCompile Include="Source\Input\Button.cpp" />
         <ClCompile Include="Source\main.cpp">
             <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -308,12 +608,12 @@
         <ClInclude Include="Source\Game\EntityManager.h" />
         <ClInclude Include="Source\Game\GameLoop.h" />
         <ClInclude Include="Source\Game\Puzzle.h" />
-        <ClInclude Include="Source\Grid\Cage.h" />
-        <ClInclude Include="Source\Grid\CageView.h" />
-        <ClInclude Include="Source\Grid\Cell.h" />
-        <ClInclude Include="Source\Grid\Grid.h" />
         <ClInclude Include="Source\Grid\GridSettings.h" />
-        <ClInclude Include="Source\Grid\GridView.h" />
+        <ClInclude Include="Source\Grid\Models\Cage.h" />
+        <ClInclude Include="Source\Grid\Models\Cell.h" />
+        <ClInclude Include="Source\Grid\Models\Grid.h" />
+        <ClInclude Include="Source\Grid\Views\CageView.h" />
+        <ClInclude Include="Source\Grid\Views\GridView.h" />
         <ClInclude Include="Source\Input\Button.h" />
         <ClInclude Include="Source\Theme\Theme.h" />
     </ItemGroup>

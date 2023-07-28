@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include <vector>
 
-#include "Cage.h"
-#include "GridSettings.h"
-#include "../Game/Entity.h"
+#include "../Models/Cage.h"
+#include "../GridSettings.h"
+#include "../../Game/Entity.h"
 
 class CageView : public Entity {
     enum CellSide {
