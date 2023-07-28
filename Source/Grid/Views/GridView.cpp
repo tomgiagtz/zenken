@@ -29,9 +29,19 @@ void GridView::SetPosition(const float _x, const float _y) {
     }
 }
 
+Button* selectedButton = nullptr;
+
 void GridView::OnButtonSelected(int _index) {
+    if (selectedButton) {
+        if (_index == selectedButton->GetID()) return;
+        std::cout << "Deselecting button " << selectedButton->GetID() << std::endl;
+        selectedButton->Deselect();
+    }
     std::cout << "Button " + std::to_string(_index) + " selected" << std::endl;
+
+    selectedButton = buttons[_index];
 }
+
 
 std::vector<Button*> GridView::ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings) {
     const unsigned gridSize = _gridSettings.gridSize;

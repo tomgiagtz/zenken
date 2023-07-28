@@ -12,6 +12,13 @@ class Button : public Entity {
 public:
     using Callback = std::function<void(int)>;
 
+    enum ButtonState {
+        BTN_IDLE = 0,
+        BTN_HOVER,
+        BTN_PRESSED,
+        BTN_SELECTED,
+    };
+
 private:
     int buttonId = 0;
     sf::RectangleShape* shape;
@@ -31,12 +38,7 @@ private:
 
 
 
-    enum ButtonState {
-        BTN_IDLE = 0,
-        BTN_HOVER,
-        BTN_PRESSED,
-        BTN_SELECTED,
-    };
+
 
     ButtonState state = BTN_IDLE;
     ButtonState prevState = BTN_IDLE;
@@ -47,7 +49,6 @@ private:
         _target.draw(*shape, _states);
         _target.draw(*buttonText, _states);
     }
-
 
     void SetState(ButtonState _state);
 
@@ -68,7 +69,7 @@ public:
     //     this->shape->setFillColor(_idleColor);
     // }
 
-
+    void Deselect();
 
     void SetOnSelectedCallback(Callback _callback) {
         this->onSelectedCallback = _callback;
