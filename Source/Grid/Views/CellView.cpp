@@ -8,13 +8,13 @@ void CellView::Start() {}
 
 void CellView::Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) {
     if (button->IsSelected() && _event->type == sf::Event::KeyPressed) {
-        std::cout << "CellView::Update: " << button->GetID() << std::endl;
+        // std::cout << "CellView::Update: " << button->GetID() << std::endl;
         HandleKeyPressed(_event->key.code);
     }
 }
 
 void CellView::HandleKeyPressed(const sf::Keyboard::Key _key) {
-    std::cout << "CellView::HandleKeyPressed: " << _key << std::endl;
+    // std::cout << "CellView::HandleKeyPressed: " << _key << std::endl;
     if (_key == -1) {
         return;
     }
@@ -66,5 +66,5 @@ void CellView::HandleKeyPressed(const sf::Keyboard::Key _key) {
     }
 
     button->SetText(cell->ToString());
-    std::cout << "CellView::HandleKeyPressed: " << cell->ToString() << std::endl;
+    // std::cout << "CellView::HandleKeyPressed: " << cell->ToString() << std::endl;
 }

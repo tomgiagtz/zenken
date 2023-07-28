@@ -13,6 +13,17 @@
 #include "Cell.h"
 
 class Cage {
+
+public:
+    enum Operation {
+        Constant,
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division
+    };
+
+private:
     struct CompareCells {
         bool operator()(const Cell* lhs, const Cell* rhs) const {
             // Here we dereference the pointers and compare the Cell objects.
@@ -22,15 +33,32 @@ class Cage {
     };
 
     std::set<Cell*, CompareCells> cells;
-    char operation = 'c';
+
+
+
+    int target;
+    Operation operation;
 
 public:
-    Cage() = default;
+    int GetTarget() const {
+        return target;
+    }
+
+    Operation GetOperation() const {
+        return operation;
+    }
+
+    Cage(int target, Operation operation) :
+        target(target), operation(operation) {}
+
     /**
      * \brief IsValid checks if the cage is geometrically valid, every cell is unique, and the cage is contiguous
      * \return bool whether the cage is valid or not
      */
     bool IsValid();
+    bool IsFull();
+    bool IsPossible();
+    bool IsCorrect();
 
     bool Contains(Cell* _cell) {
         return cells.find(_cell) != cells.end();
@@ -65,6 +93,10 @@ public:
 
     void UnsafeAdd(Cell* _cell) {
         cells.insert(_cell);
+    }
+
+    void SetOperation(Operation _operation) {
+        operation = _operation;
     }
 
     std::string ToString() {
@@ -102,9 +134,7 @@ public:
     }
 
 
+    unsigned GetMax();
 
-
-
-
-
+    unsigned GetMaxIndex();
 };

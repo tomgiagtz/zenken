@@ -6,10 +6,23 @@ void CageView::draw(sf::RenderTarget& _target, sf::RenderStates _states) const {
     for (const sf::RectangleShape& edge : edges) {
         _target.draw(edge, _states);
     }
+    _target.draw(label, _states);
 }
 
 void CageView::Start() {}
-void CageView::Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) {}
+
+void CageView::Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) {
+    if (!cage->IsFull()) {
+        SetColor(Theme::Orange);
+        return;
+    }
+
+    if (cage->IsCorrect()) {
+        SetColor(sf::Color::Green);
+    } else {
+        SetColor(sf::Color::Red);
+    }
+}
 
 
 
@@ -106,7 +119,6 @@ void CageView::DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _
     } else { //vert edge
 
         if (_neighbors[Top] && _neighbors[Bottom]) {
-            // if ()
             topShift = edgeOffset;
             //unless edge is not a neighbor
             if (!_neighbors[_side]) {
@@ -153,6 +165,7 @@ void CageView::DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _
 }
 
 void CageView::DrawCage(Cage* _cage) {
+    //draw edges
     for (Cell* cell : _cage->GetCells()) {
         std::array<bool, 4> neighbors = _cage->GetCellNeighborsInCage(cell);
         for (unsigned i = 0; i < neighbors.size(); i++) {
@@ -160,5 +173,29 @@ void CageView::DrawCage(Cage* _cage) {
                 DrawEdge(static_cast<CellSide>(i), cell, neighbors);
             }
         }
+    }
+
+    //draw target and operation
+    sf::Vector2f cellPos = gridSettings.GetCellPosition(_cage->GetCell(0)->GetIndex());
+    cellPos -= sf::Vector2f(gridSettings.edgePadding, gridSettings.edgePadding * 2);
+
+    label = sf::Text(GetLabelString(), Theme::Mono, 60);
+    label.setFillColor(Theme::Orange);
+    label.setPosition(cellPos);
+}
+
+std::string CageView::GetLabelString() {
+    std::string res = std::to_string(cage->GetTarget());
+    switch (cage->GetOperation()) {
+    case Cage::Addition:
+        return res + "+";
+    case Cage::Subtraction:
+        return res + "-";
+    case Cage::Multiplication:
+        return res + "x";
+    case Cage::Division:
+        return res + "/";
+    default:
+        return res;
     }
 }

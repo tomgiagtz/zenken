@@ -34,10 +34,10 @@ Button* selectedButton = nullptr;
 void GridView::OnButtonSelected(const unsigned _index) {
     if (selectedButton) {
         if (_index == selectedButton->GetID()) return;
-        std::cout << "Deselecting button " << selectedButton->GetID() << std::endl;
+        // std::cout << "Deselecting button " << selectedButton->GetID() << std::endl;
         selectedButton->Deselect();
     }
-    std::cout << "Button " + std::to_string(_index) + " selected" << std::endl;
+    // std::cout << "Button " + std::to_string(_index) + " selected" << std::endl;
 
     selectedButton = cellViews[_index]->GetButton();
 }

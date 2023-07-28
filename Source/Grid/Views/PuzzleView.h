@@ -15,8 +15,12 @@ public:
         gridView = new GridView(puzzle->GetGrid(), settings);
         EntityManager::Instance().RegisterEntity(*gridView);
 
-        cageView = new CageView(puzzle->GetCages(), settings);
-        EntityManager::Instance().RegisterEntity(*cageView);
+        std::vector<Cage*> cages = *puzzle->GetCages();
+        for (Cage* cage : cages) {
+            CageView* cageView = new CageView(cage, settings);
+            EntityManager::Instance().RegisterEntity(*cageView);
+            cageViews.push_back(cageView);
+        }
 
         // std::cout << "Cage is valid: " + std::to_string(cage->IsValid()) << std::endl;
         // std::cout << "Cage: " + cage->ToString() << std::endl;
@@ -28,7 +32,7 @@ private:
     GridView* gridView;
 
     // std::vector<Cage*> cages;
-    CageView* cageView;
+    std::vector<CageView*> cageViews;
 
     Puzzle* puzzle;
 

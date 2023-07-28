@@ -19,21 +19,26 @@ protected:
 public:
     void Start() override;
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;
-    ~CageView() override = default;
 
     void DrawEdge(CellSide _side, const Cell* _cell, std::array<bool, 4> _neighbors);
 
-    CageView(std::vector<Cage*>* _cages, const GridSettings& _gridSettings) :
-        gridSettings(_gridSettings), cages(_cages) {
-        for (Cage* cage : *_cages) {
-            DrawCage(cage);
+    CageView(Cage* _cage, const GridSettings& _gridSettings) :
+        gridSettings(_gridSettings), cage(_cage) {
+        DrawCage(cage);
+    }
+
+    void SetColor(sf::Color _color) {
+        for (sf::RectangleShape& edge : edges) {
+            edge.setFillColor(_color);
         }
     }
 
     void DrawCage(Cage* _cage);
+    std::string GetLabelString();
 
-
+private:
     GridSettings gridSettings;
-    std::vector<Cage*>* cages;
+    Cage* cage;
     std::vector<sf::RectangleShape> edges;
+    sf::Text label;
 };
