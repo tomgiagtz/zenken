@@ -74,14 +74,14 @@ bool blockInput = false;
 void Button::Update(const float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) {
     if (_event->type == sf::Event::MouseButtonReleased && state == BTN_PRESSED) {
         blockInput = false;
-        std::cout << "mouse button released" << std::endl;
+        // std::cout << "mouse button released" << std::endl;
         if (IsSelected()) {
             isSelected = false;
-            std::cout << "exit selected state" << std::endl;
+            // std::cout << "exit selected state" << std::endl;
             SetState(BTN_IDLE);
         } else if (!isSelected && isSelectable) {
             isSelected = true;
-            std::cout << "enter selected state" << std::endl;
+            // std::cout << "enter selected state" << std::endl;
             SetState(BTN_SELECTED);
         }
         return;
@@ -96,12 +96,12 @@ void Button::Update(const float _deltaTime, const sf::RenderWindow* _window, con
             SetState(BTN_IDLE);
         }
     } else {
-        std::cout << "mouse over button" << std::endl;
+        // std::cout << "mouse over button" << std::endl;
         if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            std::cout << "enter hover state" << std::endl;
+            // std::cout << "enter hover state" << std::endl;
             if (!IsSelected()) SetState(BTN_HOVER);
         } else {
-            std::cout << "enter pressed state" << std::endl;
+            // std::cout << "enter pressed state" << std::endl;
             SetState(BTN_PRESSED);
             blockInput = true;
         }

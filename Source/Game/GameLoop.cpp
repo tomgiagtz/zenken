@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
-#include "Puzzle.h"
+#include "../Grid/Views/PuzzleView.h"
 
 Button* GameLoop::CreateButton() {
     sf::Vector2f squareSize(240.f, 120.f);
@@ -24,7 +24,7 @@ void GameLoop::Init() {
     sf::Vector2u size = window.getSize();
     sf::Vector2f puzzlePosition = sf::Vector2f(size.x - 900 - 88, size.y / 2 - 450.f);
 
-    Puzzle puzzle = Puzzle(puzzlePosition, 3, 900);
+    PuzzleView puzzle = PuzzleView(puzzlePosition, 3, 900);
 }
 
 void GameLoop::Update() {

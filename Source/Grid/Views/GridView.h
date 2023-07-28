@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "CellView.h"
 #include "../Models/Grid.h"
 #include "../GridSettings.h"
 #include "../../Game/Entity.h"
@@ -14,6 +15,7 @@ protected:
 private:
     Grid* grid;
     std::vector<Button*> buttons;
+    std::vector<CellView*> cellViews;
     GridSettings gridSettings;
 
 public:
@@ -21,18 +23,12 @@ public:
         grid(_grid) {
         const unsigned gridSize = grid->GetSize();
         gridSettings = GridSettings(gridSize, _position, _width, _padding);
-        buttons = ButtonsFromGrid(_grid, gridSettings);
-        for (unsigned int i = 0; i < gridSettings.gridSize * gridSettings.gridSize; ++i) {
-            EntityManager::Instance().RegisterEntity(*buttons[i]);
-        }
+        cellViews = CellViewsFromGrid(_grid, &gridSettings);
     }
 
     GridView(Grid* _grid, const GridSettings& _gridSettings) :
         grid(_grid), gridSettings(_gridSettings) {
-        buttons = ButtonsFromGrid(_grid, gridSettings);
-        for (unsigned int i = 0; i < gridSettings.gridSize * gridSettings.gridSize; ++i) {
-            EntityManager::Instance().RegisterEntity(*buttons[i]);
-        }
+        cellViews = CellViewsFromGrid(_grid, &gridSettings);
     }
 
     ~GridView() override {
@@ -49,6 +45,6 @@ public:
 
     void SetPosition(float _x, float _y);
 
-    std::vector<Button*> ButtonsFromGrid(Grid* _grid, const GridSettings& _gridSettings);
-    void OnButtonSelected(int _index);
+    std::vector<CellView*> CellViewsFromGrid(Grid* _grid, const GridSettings* _gridSettings);
+    void OnButtonSelected(unsigned _index);
 };

@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <string>
 #include <SFML/System/Vector2.hpp>
 
 
@@ -27,6 +28,14 @@ public:
     void SetPosition(const unsigned _i, const unsigned _j) {
         position.x = _i;
         position.y = _j;
+    }
+
+    //tostring
+    std::string ToString() const {
+        if (value == 0) {
+            return " ";
+        }
+        return std::to_string(value);
     }
 
     bool operator ==(const Cell& _other) const {

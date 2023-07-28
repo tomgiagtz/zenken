@@ -20,7 +20,7 @@ public:
     };
 
 private:
-    int buttonId = 0;
+    unsigned buttonId = 0;
     sf::RectangleShape* shape;
     bool isSelectable;
     bool isSelected = false;
@@ -34,7 +34,7 @@ private:
 
     sf::Vector2f position;
 
-    std::function<void(int)> onSelectedCallback;
+    std::function<void(unsigned)> onSelectedCallback;
 
 
 
@@ -91,7 +91,7 @@ public:
     }
 
     // default constructor
-    Button(const int _id = 0, const float _xSize = 20, const float _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
+    Button(const unsigned _id = 0, const float _xSize = 20, const float _ySize = 20, const std::string& _text = "press", bool _isSelectable = true, sf::Color _idleColor = Theme::Pale, sf::Color _hoverColor = Theme::Dun, sf::Color _activeColor = Theme::DarkDun) :
         buttonId(_id), isSelectable(_isSelectable), idleColor(_idleColor), hoverColor(_hoverColor), activeColor(_activeColor) {
         // Set button shape
         shape = new sf::RectangleShape(sf::Vector2f(_xSize, _ySize));
@@ -131,13 +131,14 @@ public:
         buttonId = _id;
     }
 
-    int GetID() {
+    unsigned GetID() {
         return buttonId;
     }
 
     void SetText(std::string _text) {
         buttonText->setString(_text);
-        buttonText->setPosition(this->shape->getPosition().x + (this->shape->getGlobalBounds().width / 2.f) - buttonText->getGlobalBounds().width / 2.f, this->shape->getPosition().y);
+        sf::FloatRect textRect = buttonText->getLocalBounds();
+        buttonText->setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     }
 
     void Update(float _deltaTime, const sf::RenderWindow* _window, const sf::Event* _event) override;
