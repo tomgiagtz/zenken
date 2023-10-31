@@ -176,11 +176,11 @@ void CageView::DrawCage(Cage* _cage) {
     }
 
     //draw target and operation
-    sf::Vector2f cellPos = gridSettings.GetCellPosition(_cage->GetCell(0)->GetIndex());
-    cellPos -= sf::Vector2f(gridSettings.edgePadding, gridSettings.edgePadding * 2);
+    sf::Vector2f cellPos = edges[0].getPosition();
+    cellPos -= sf::Vector2f(0, gridSettings.edgePadding);
 
-    label = sf::Text(GetLabelString(), Theme::Mono, 60);
-    label.setFillColor(Theme::Orange);
+    label = sf::Text(GetLabelString(), Theme::Mono, 36);
+    label.setFillColor(Theme::DarkCharcoal);
     label.setPosition(cellPos);
 }
 
