@@ -180,7 +180,9 @@ void CageView::DrawCage(Cage* _cage) {
     cellPos -= sf::Vector2f(0, gridSettings.edgePadding);
 
     label = sf::Text(GetLabelString(), Theme::Mono, 36);
-    label.setFillColor(Theme::DarkCharcoal);
+    label.setFillColor(Theme::White);
+    label.setOutlineColor(Theme::Black);
+    label.setOutlineThickness(2.5f);
     label.setPosition(cellPos);
 }
 

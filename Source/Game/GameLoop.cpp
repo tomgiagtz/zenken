@@ -50,7 +50,7 @@ void GameLoop::Update() {
 
 
     //test
-    window.clear(Theme::DarkDun);
+    window.clear(Theme::DarkCharcoal);
     entityManager->RenderEntities(window);
     // window.draw(*button);
     window.display();
