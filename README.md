@@ -1,5 +1,5 @@
 # zenken
-A KenKen puzzle game, built in C++ using SFML.
+A KenKen puzzle game, built from scratch in C++ using SFML.
 
 ## Current Progress
 https://github.com/user-attachments/assets/a41901ec-677f-4449-b47d-1a93d94f7cb4
