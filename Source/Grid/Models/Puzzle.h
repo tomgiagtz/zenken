@@ -22,6 +22,7 @@ public:
         cages = CageSet1();
     }
 
+    // harded coded puzzle found online
     std::vector<Cage*> CageSet1() {
         size = 5;
         grid = new Grid(size);
